@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <MainComponent/>
+    <h1>This is base app</h1>
+    <Button/>
   </div>
 </template>
 
 <script>
-import MainComponent from './components/MainComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    MainComponent,
+    Button: () => import("feComponent/Button")
   }
 }
 </script>

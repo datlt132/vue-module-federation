@@ -1,6 +1,6 @@
 <template>
   <button>
-    <slot>Button</slot>
+    <slot>Button from feComponent</slot>
   </button>
 </template>
 

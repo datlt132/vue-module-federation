@@ -1,21 +1,25 @@
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 
 module.exports = {
-  publicPath: 'http://localhost:8080/',
+  publicPath: 'http://localhost:9003/',
   configureWebpack: {
     optimization: {
       splitChunks: false
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: 'consumer',
+        name: 'feComponent',
         filename: 'remoteEntry.js',
-        remotes: {
-          core: 'core@http://localhost:9000/remoteEntry.js',
-          other: 'other@http://localhost:9001/remoteEntry.js',
+        library: { type: 'var', name: 'feComponent' },
+        exposes: {
+          './Button': './src/components/Button',
+          './Section': './src/components/Section',
         },
         shared: require('./package.json').dependencies,
       }),
     ],
+  },
+  devServer: {
+    port: 9003,
   },
 };
